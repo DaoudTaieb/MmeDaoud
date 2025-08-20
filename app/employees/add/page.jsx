@@ -15,7 +15,7 @@ export default function AddEmployeePage() {
     prenom: '',
     telephone: '',
     type: '',
-    salaire: ''   // ⚡ salaire séparé du type
+    Salaire: ''
   });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -40,7 +40,7 @@ export default function AddEmployeePage() {
           prenom: '',
           telephone: '',
           type: '',
-          salaire: ''
+          Salaire: ''
         });
         setTimeout(() => setSuccess(false), 3000);
       }
@@ -74,7 +74,7 @@ export default function AddEmployeePage() {
                   <Input
                     id="nom"
                     value={formData.nom}
-                    onChange={(e) => setFormData({ ...formData, nom: e.target.value })}
+                    onChange={(e) => setFormData({...formData, nom: e.target.value})}
                     placeholder="Nom de famille"
                     required
                   />
@@ -85,7 +85,7 @@ export default function AddEmployeePage() {
                   <Input
                     id="prenom"
                     value={formData.prenom}
-                    onChange={(e) => setFormData({ ...formData, prenom: e.target.value })}
+                    onChange={(e) => setFormData({...formData, prenom: e.target.value})}
                     placeholder="Prénom"
                     required
                   />
@@ -97,7 +97,7 @@ export default function AddEmployeePage() {
                 <Input
                   id="telephone"
                   value={formData.telephone}
-                  onChange={(e) => setFormData({ ...formData, telephone: e.target.value })}
+                  onChange={(e) => setFormData({...formData, telephone: e.target.value})}
                   placeholder="Numéro de téléphone"
                   required
                 />
@@ -105,26 +105,26 @@ export default function AddEmployeePage() {
 
               <div className="space-y-2">
                 <Label htmlFor="type">Type d'Employé</Label>
-                <Select value={formData.type} onValueChange={(value) => setFormData({ ...formData, type: value })}>
+                <Select value={formData.type} onValueChange={(value) => setFormData({...formData, type: value})}>
                   <SelectTrigger>
                     <SelectValue placeholder="Sélectionnez le type" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="salaire">Employé Salaire</SelectItem>
+                    <SelectItem value="Salaire">Employé Salaire journalier</SelectItem>
                     <SelectItem value="metre">Employé par Mètre</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
 
-              {formData.type === 'salaire' && (
+              {formData.type === 'Salaire' && (
                 <div className="space-y-2">
-                  <Label htmlFor="salaire">Salaire Mensuel (TND)</Label>
+                  <Label htmlFor="Salaire">Salaire journalier (TND)</Label>
                   <Input
-                    id="salaire"
+                    id="Salaire"
                     type="number"
-                    value={formData.salaire}
-                    onChange={(e) => setFormData({ ...formData, salaire: e.target.value })}
-                    placeholder="Salaire mensuel"
+                    value={formData.Salaire}
+                    onChange={(e) => setFormData({...formData, Salaire: e.target.value})}
+                    placeholder="Salaire journalier"
                     required
                   />
                 </div>
@@ -136,13 +136,13 @@ export default function AddEmployeePage() {
                 </div>
               )}
 
-              <Button
-                type="submit"
+              <Button 
+                type="submit" 
                 className="w-full bg-blue-600 hover:bg-blue-700"
                 disabled={loading}
               >
                 <Save className="w-4 h-4 mr-2" />
-                {loading ? 'Ajout en cours...' : "Ajouter l'Employé"}
+                {loading ? 'Ajout en cours...' : 'Ajouter l\'Employé'}
               </Button>
             </form>
           </CardContent>

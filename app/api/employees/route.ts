@@ -41,14 +41,14 @@ export async function DELETE(request: Request) {
 
 export async function POST(request: Request) {
   try {
-    const { nom, prenom, telephone, type, Salaire_journalier } = await request.json()
+    const { nom, prenom, telephone, type, Salaire } = await request.json()
 
     const result = await query("INSERT INTO employees (nom, prenom, telephone, type, salaire) VALUES (?, ?, ?, ?, ?)", [
       nom,
       prenom,
       telephone,
       type,
-      Salaire_journalier || null,
+      Salaire || null,
     ])
 
     return NextResponse.json({ success: true, id: (result as any).insertId })
