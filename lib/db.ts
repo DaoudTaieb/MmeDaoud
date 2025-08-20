@@ -2,15 +2,15 @@ import mysql from "mysql2/promise"
 import type { RowDataPacket, OkPacket, ResultSetHeader } from "mysql2/promise"
 
 const dbConfig = {
-  host: process.env.DB_HOST //|| "127.0.0.1"
+  host: process.env.DB_HOST
   ,
   port: Number.parseInt(process.env.DB_PORT!)
   ,
-  user: process.env.DB_USER //|| "root"
+  user: process.env.DB_USER 
   ,
-  password: process.env.DB_PASSWORD //|| ""
+  password: process.env.DB_PASSWORD 
   ,
-  database: process.env.DB_NAME //|| "construction_management"
+  database: process.env.DB_NAME 
   ,
   waitForConnections: true,
   connectionLimit: 10,
