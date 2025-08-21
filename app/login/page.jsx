@@ -53,7 +53,7 @@ export default function LoginPage() {
   {/* ✅ Logo STBTP */}
   <div className="flex justify-center mb-4">
     <Image
-      src="/STBTP.png"
+      src="/MmeDaoud.jpg" // Assurez-vous que le chemin est correct
       alt="Logo pâtisserie Mme Daoud"
       width={105} // ← agrandi
       height={105} // ← agrandi
@@ -63,7 +63,7 @@ export default function LoginPage() {
   </div>
   {/* ✅ Titre de l'app */}
   <p className="text-gray-600 mt-2 text-sm md:text-base">
-    Société Trabelsi de Bâtiments et Travaux Publics
+    Pâtisserie Mme Daoud
   </p>
 </div>
 
