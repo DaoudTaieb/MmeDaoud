@@ -789,21 +789,21 @@ export default function ClientsPage() {
     <Layout currentPath="/clients">
       <div className="space-y-6">
         <div className="flex items-center justify-between">
-          <h1 className="text-3xl font-bold">Gestion des Clients</h1>
+          <h1 className="text-3xl font-bold">Gestion des Recettes</h1>
           <Dialog open={showClientDialog} onOpenChange={setShowClientDialog}>
             <DialogTrigger asChild>
               <Button>
                 <UserPlus className="mr-2 h-4 w-4" />
-                Nouveau Client
+                Nouveau Article
               </Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle>Ajouter un nouveau client</DialogTitle>
+                <DialogTitle>Ajouter un nouveau Article</DialogTitle>
               </DialogHeader>
               <form onSubmit={addClient} className="space-y-4">
                 <div>
-                  <Label htmlFor="nom">Nom</Label>
+                  <Label htmlFor="nom">Article</Label>
                   <Input
                     id="nom"
                     value={newClient.nom}
@@ -812,7 +812,7 @@ export default function ClientsPage() {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="prenom">Prénom</Label>
+                  <Label htmlFor="prenom">Description</Label>
                   <Input
                     id="prenom"
                     value={newClient.prenom}
@@ -820,22 +820,7 @@ export default function ClientsPage() {
                     required
                   />
                 </div>
-                <div>
-                  <Label htmlFor="telephone">Téléphone</Label>
-                  <Input
-                    id="telephone"
-                    value={newClient.telephone}
-                    onChange={(e) => setNewClient({ ...newClient, telephone: e.target.value })}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="adresse">Adresse</Label>
-                  <Input
-                    id="adresse"
-                    value={newClient.adresse}
-                    onChange={(e) => setNewClient({ ...newClient, adresse: e.target.value })}
-                  />
-                </div>
+               
                 <Button type="submit">Ajouter</Button>
               </form>
             </DialogContent>
@@ -848,7 +833,7 @@ export default function ClientsPage() {
             <CardHeader>
               <CardTitle className="flex items-center">
                 <Users className="mr-2 h-5 w-5" />
-                Clients
+                Recette
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -882,184 +867,24 @@ export default function ClientsPage() {
             {selectedClient ? (
               <Tabs defaultValue="invoices" className="space-y-4">
                 <TabsList>
-                  <TabsTrigger value="invoices" className="flex items-center">
-                    <CreditCard className="mr-2 h-4 w-4" />
-                    Paiements
-                  </TabsTrigger>
+                  
                   <TabsTrigger value="materials" className="flex items-center">
                     <Package className="mr-2 h-4 w-4" />
-                    Matières
+                    Ingrédient
                   </TabsTrigger>
                 </TabsList>
 
-                <TabsContent value="invoices">
-                  <Card>
-                    <CardHeader>
-                      <div className="flex items-center justify-between">
-                        <CardTitle>
-                          Paiements - {selectedClient.prenom} {selectedClient.nom}
-                        </CardTitle>
-                        <div className="flex gap-2">
-                          <Button
-                            onClick={printInvoices}
-                            variant="outline"
-                            size="sm"
-                            disabled={invoices.length === 0}
-                          >
-                            <Printer className="mr-2 h-4 w-4" />
-                            Imprimer
-                          </Button>
-                          <Dialog open={showInvoiceDialog} onOpenChange={setShowInvoiceDialog}>
-                            <DialogTrigger asChild>
-                              <Button size="sm">
-                                <Plus className="mr-2 h-4 w-4" />
-                                Nouveau Paiement
-                              </Button>
-                            </DialogTrigger>
-                            <DialogContent className="max-w-2xl">
-                              <DialogHeader>
-                                <DialogTitle>Ajouter un nouveau paiement</DialogTitle>
-                              </DialogHeader>
-                              <form onSubmit={addInvoice} className="space-y-4">
-                                <div>
-                                  <Label htmlFor="description">Description</Label>
-                                  <Input
-                                    id="description"
-                                    value={newInvoice.description}
-                                    onChange={(e) => setNewInvoice({ ...newInvoice, description: e.target.value })}
-                                    required
-                                  />
-                                </div>
-                                <div>
-                                  <Label htmlFor="date">Date</Label>
-                                  <Input
-                                    id="date"
-                                    type="date"
-                                    value={newInvoice.date}
-                                    onChange={(e) => setNewInvoice({ ...newInvoice, date: e.target.value })}
-                                    required
-                                  />
-                                </div>
-
-                                <div className="space-y-2">
-                                  <Label>Lignes de facturation</Label>
-                                  {newInvoice.lines.map((line, index) => (
-                                    <div key={index} className="flex gap-2 items-center">
-                                      <Input
-                                        placeholder="Description"
-                                        value={line.description}
-                                        onChange={(e) => updateNewInvoiceLine(index, "description", e.target.value)}
-                                        className="flex-1"
-                                      />
-                                      <Input
-                                        placeholder="Quantité"
-                                        type="number"
-                                        step="0.01"
-                                        value={line.quantity}
-                                        onChange={(e) => updateNewInvoiceLine(index, "quantity", e.target.value)}
-                                        className="w-24"
-                                      />
-                                      <Input
-                                        placeholder="Prix unitaire"
-                                        type="number"
-                                        step="0.01"
-                                        value={line.unit_price}
-                                        onChange={(e) => updateNewInvoiceLine(index, "unit_price", e.target.value)}
-                                        className="w-32"
-                                      />
-                                      {newInvoice.lines.length > 1 && (
-                                        <Button
-                                          type="button"
-                                          variant="outline"
-                                          size="sm"
-                                          onClick={() => removeNewInvoiceLine(index)}
-                                        >
-                                          <X className="h-4 w-4" />
-                                        </Button>
-                                      )}
-                                    </div>
-                                  ))}
-                                  <Button type="button" variant="outline" onClick={addInvoiceLineField}>
-                                    <Plus className="mr-2 h-4 w-4" />
-                                    Ajouter une ligne
-                                  </Button>
-                                </div>
-
-                                <div className="text-right font-bold">
-                                  Total: {calculateInvoiceLineTotal(newInvoice.lines).toFixed(2)}TND
-                                </div>
-
-                                <Button type="submit">Ajouter le paiement</Button>
-                              </form>
-                            </DialogContent>
-                          </Dialog>
-                        </div>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-4">
-                        {invoices.map((invoice) => (
-                          <div key={invoice.id} className="border rounded p-4">
-                            <div className="flex justify-between items-start mb-2">
-                              <div>
-                                <h4 className="font-medium">{invoice.description}</h4>
-                                <p className="text-sm text-gray-600">{formatDate(invoice.date)}</p>
-                              </div>
-                              <div className="flex gap-2">
-                                <Button variant="outline" size="sm" onClick={() => editInvoice(invoice)}>
-                                  Modifier
-                                </Button>
-                                <Button
-                                  variant="outline"
-                                  size="sm"
-                                  onClick={() => handleDeleteInvoice(invoice.id)}
-                                  className="text-red-600 hover:text-red-700"
-                                >
-                                  Supprimer
-                                </Button>
-                              </div>
-                            </div>
-                            {invoice.lines && invoice.lines.length > 0 && (
-                              <div className="space-y-1">
-                                {invoice.lines.map((line, index) => (
-                                  <div key={index} className="text-sm flex justify-between">
-                                    <span>{line.description}</span>
-                                    <span>
-                                      {line.quantity} × {parseFloat(line.unit_price || 0).toFixed(2)}TND ={" "}
-                                      {(parseFloat(line.quantity || 0) * parseFloat(line.unit_price || 0)).toFixed(2)}TND
-                                    </span>
-                                  </div>
-                                ))}
-                                <div className="text-right font-bold border-t pt-1">
-                                  Total: {calculateInvoiceLineTotal(invoice.lines).toFixed(2)}TND
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        ))}
-                        {invoices.length === 0 && <p className="text-gray-500">Aucun paiement enregistré.</p>}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </TabsContent>
+             
 
                 <TabsContent value="materials">
                   <Card>
                     <CardHeader>
                       <div className="flex items-center justify-between">
                         <CardTitle>
-                          Matières - {selectedClient.prenom} {selectedClient.nom}
+                          Ingredient 
                         </CardTitle>
                         <div className="flex gap-2">
-                          <Button
-                            onClick={printMaterials}
-                            variant="outline"
-                            size="sm"
-                            disabled={materials.length === 0}
-                          >
-                            <Printer className="mr-2 h-4 w-4" />
-                            Imprimer
-                          </Button>
+                          
                           <Dialog open={showMaterialDialog} onOpenChange={setShowMaterialDialog}>
                             <DialogTrigger asChild>
                               <Button size="sm">
@@ -1094,22 +919,7 @@ export default function ClientsPage() {
                                         onChange={(e) => updateDescription(index, "description", e.target.value)}
                                         className="flex-1"
                                       />
-                                      <Input
-                                        placeholder="Quantité"
-                                        type="number"
-                                        step="0.01"
-                                        value={desc.quantity}
-                                        onChange={(e) => updateDescription(index, "quantity", e.target.value)}
-                                        className="w-24"
-                                      />
-                                      <Input
-                                        placeholder="Prix"
-                                        type="number"
-                                        step="0.01"
-                                        value={desc.price}
-                                        onChange={(e) => updateDescription(index, "price", e.target.value)}
-                                        className="w-32"
-                                      />
+                                    
                                       {newMaterialStep.descriptions.length > 1 && (
                                         <Button
                                           type="button"
@@ -1128,9 +938,7 @@ export default function ClientsPage() {
                                   </Button>
                                 </div>
 
-                                <div className="text-right font-bold">
-                                  Total: {calculateStepTotal(newMaterialStep.descriptions).toFixed(2)}TND
-                                </div>
+                               
 
                                 <Button type="submit">Ajouter l'étape</Button>
                               </form>
@@ -1164,15 +972,10 @@ export default function ClientsPage() {
                                 {material.descriptions.map((desc, index) => (
                                   <div key={index} className="text-sm flex justify-between">
                                     <span>{desc.description}</span>
-                                    <span>
-                                      {desc.quantity} × {parseFloat(desc.price || 0).toFixed(2)}TND ={" "}
-                                      {(parseFloat(desc.quantity || 0) * parseFloat(desc.price || 0)).toFixed(2)}TND
-                                    </span>
+                                    
                                   </div>
                                 ))}
-                                <div className="text-right font-bold border-t pt-1">
-                                  Total: {calculateStepTotal(material.descriptions).toFixed(2)}TND
-                                </div>
+                               
                               </div>
                             )}
                           </div>
@@ -1288,12 +1091,12 @@ export default function ClientsPage() {
         <Dialog open={showEditMaterialDialog} onOpenChange={setShowEditMaterialDialog}>
           <DialogContent className="max-w-2xl">
             <DialogHeader>
-              <DialogTitle>Modifier l'étape de matière</DialogTitle>
+              <DialogTitle>Modifier l'étape de Les Ingredients</DialogTitle>
             </DialogHeader>
             {editingStep && (
               <form onSubmit={updateMaterialStep} className="space-y-4">
                 <div>
-                  <Label htmlFor="edit-stepName">Nom de l'étape</Label>
+                  <Label htmlFor="edit-stepName">Nom du Article</Label>
                   <Input
                     id="edit-stepName"
                     value={editingStep.stepName}
@@ -1312,22 +1115,7 @@ export default function ClientsPage() {
                         onChange={(e) => updateEditingDescription(index, "description", e.target.value)}
                         className="flex-1"
                       />
-                      <Input
-                        placeholder="Quantité"
-                        type="number"
-                        step="0.01"
-                        value={desc.quantity}
-                        onChange={(e) => updateEditingDescription(index, "quantity", e.target.value)}
-                        className="w-24"
-                      />
-                      <Input
-                        placeholder="Prix"
-                        type="number"
-                        step="0.01"
-                        value={desc.price}
-                        onChange={(e) => updateEditingDescription(index, "price", e.target.value)}
-                        className="w-32"
-                      />
+                      
                       {editingStep.descriptions.length > 1 && (
                         <Button
                           type="button"
@@ -1346,9 +1134,7 @@ export default function ClientsPage() {
                   </Button>
                 </div>
 
-                <div className="text-right font-bold">
-                  Total: {calculateStepTotal(editingStep.descriptions).toFixed(2)}TND
-                </div>
+               
 
                 <div className="flex gap-2">
                   <Button type="submit">Mettre à jour</Button>
