@@ -81,7 +81,7 @@ export default function DashboardPage() {
       <div className="space-y-6 px-4 py-6">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Tableau de bord</h1>
-          <p className="text-gray-600 mt-2">Vue d'ensemble de votre entreprise de construction</p>
+          <p className="text-gray-600 mt-2">Vue d'ensemble de votre pâtisserie Mme Daoud</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

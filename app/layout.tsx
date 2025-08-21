@@ -8,14 +8,14 @@ import type { Metadata, Viewport } from "next"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Gestion Construction - STBTP",
-  description: "Application de gestion pour entreprise de construction STBTP",
+  title: "pâtisserie Mme Daoud - Mme Daoud",
+  description: "Application de gestion pour pâtisserie Mme Daoud",
   generator: "Next.js",
   manifest: "/manifest.json",
-  keywords: ["construction", "gestion", "STBTP", "devis", "factures", "BTP"],
-  authors: [{ name: "STBTP" }],
-  creator: "STBTP",
-  publisher: "STBTP",
+  keywords: ["pâtisserie Mme Daoud", "pâtisserie Mme Daoud", "pâtisserie Mme Daoud", "pâtisserie Mme Daoud", "pâtisserie Mme Daoud", "pâtisserie Mme Daoud"],
+  authors: [{ name: "pâtisserie Mme Daoud" }],
+  creator: "pâtisserie Mme Daoud",
+  publisher: "pâtisserie Mme Daoud",
   formatDetection: {
     email: false,
     address: false,
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   appleWebApp: {
-    title: "STBTP Construction",
+    title: "pâtisserie Mme Daoud",
     statusBarStyle: "default",
     capable: true,
   },
@@ -65,13 +65,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         {/* iOS Specific */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="STBTP Construction" />
+        <meta name="apple-mobile-web-app-title" content="pâtisserie Mme Daoud" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
 
         {/* Android Specific */}
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="application-name" content="STBTP" />
+        <meta name="application-name" content="pâtisserie Mme Daoud" />
 
         {/* Microsoft Tiles */}
         <meta name="msapplication-TileColor" content="#0d6efd" />

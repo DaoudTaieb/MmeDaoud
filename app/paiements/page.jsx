@@ -165,12 +165,12 @@ export default function ClientsPage() {
       </head>
       <body>
         <div class="header">
-          <img src="/STBTP.png" alt="Logo STBTP" class="logo" />
+          <img src="/STBTP.png" alt="Logo pâtisserie Mme Daoud" class="logo" />
           <div class="header-text">
             <h1>Liste des Paiements</h1>
           </div>
           <div class="company-info">
-            <strong>STBTP</strong><br>
+            <strong>pâtisserie Mme Daoud</strong><br>
             Société de Travaux du Bâtiment<br>
             et Travaux Publics
           </div>
@@ -326,7 +326,7 @@ export default function ClientsPage() {
       </head>
       <body>
         <div class="header">
-          <img src="/STBTP.png" alt="Logo STBTP" class="logo" />
+          <img src="/STBTP.png" alt="Logo pâtisserie Mme Daoud" class="logo" />
           <div class="header-text">
             <h1>Liste des Matières</h1>
           </div>

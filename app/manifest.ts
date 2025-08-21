@@ -2,9 +2,9 @@ import type { MetadataRoute } from "next"
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Gestion Construction STBTP",
-    short_name: "STBTP",
-    description: "Application de gestion pour entreprise de construction STBTP",
+    name: "pâtisserie Mme Daoud",
+    short_name: "pâtisserie Mme Daoud",
+    description: "Application de gestion pour pâtisserie Mme Daoud",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

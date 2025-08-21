@@ -296,13 +296,13 @@ export default function DevisPage() {
         </head>
         <body>
           <div class="header">
-            <img src="/STBTP.png" alt="Logo STBTP" class="logo" />
+            <img src="/STBTP.png" alt="Logo pâtisserie Mme Daoud" class="logo" />
             <div class="header-text">
               <h1>DEVIS</h1>
               <p style="margin: 5px 0; color: #666;">N° ${devisData.id.toString().padStart(6, '0')}</p>
             </div>
             <div class="company-info">
-              <strong>STBTP</strong><br>
+              <strong>pâtisserie Mme Daoud</strong><br>
               Société de Travaux du Bâtiment<br>
               et Travaux Publics<br>
               <br>

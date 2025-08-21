@@ -54,7 +54,7 @@ export default function LoginPage() {
   <div className="flex justify-center mb-4">
     <Image
       src="/STBTP.png"
-      alt="Logo STBTP"
+      alt="Logo pâtisserie Mme Daoud"
       width={105} // ← agrandi
       height={105} // ← agrandi
       className="rounded-full shadow-md"

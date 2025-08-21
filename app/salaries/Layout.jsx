@@ -37,7 +37,7 @@ const SidebarContent = () => {
   return (
     // On a juste besoin du contenu de la sidebar ici
     <div className="flex h-full flex-col bg-white p-6">
-      <div className="text-2xl font-bold text-gray-800 mb-8">Construction</div>
+      <div className="text-2xl font-bold text-gray-800 mb-8">pâtisserie Mme Daoud</div>
       <nav className="space-y-2">
         {navItems.map((item) => {
           const Icon = item.icon;
